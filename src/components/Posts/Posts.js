@@ -1,5 +1,6 @@
 import React from 'react';
 import Post from './Post';
+import PostHeader from './PostHeader';
 import './Posts.css';
 
 const Posts = (props) => {
@@ -8,8 +9,13 @@ const Posts = (props) => {
 
   return (
     <div className='posts-container-wrapper'>
-      {/* Map through the posts array returning a Post component at each iteration */}
-      {/* Check the implementation of Post to see what props it requires! */}
+      {posts.map(post=>
+        <div key={post.id}>
+          <PostHeader thumbnailUrl={post.thumbnailUrl} key={post.id+ 100} username={post.username} />
+          <Post post={post} likePost={likePost} />
+        </div>
+      )}
+      {/* Check the implementation of Post to see what props it requires! imageUrl={post.imageUrl} thumbnailUrl={post.thumbnailUrl} */}
     </div>
   );
 };
